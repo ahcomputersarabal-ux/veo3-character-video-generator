@@ -1,0 +1,57 @@
+veo3:
+  api_key: ${GOOGLE_API_KEY}
+  project_id: ${GOOGLE_PROJECT_ID}
+  model: veo3-fast
+  timeout: 300
+  max_retries: 3
+  polling_interval: 5
+
+video:
+  default_duration: 6
+  default_resolution: 4K
+  default_fps: 24
+  aspect_ratio: "16:9"
+  max_segments: 10
+  segment_overlap: 1
+
+character:
+  cache_embeddings: true
+  consistency_threshold: 0.85
+  max_characters: 10
+  reference_image_max_size: 20
+  embedding_cache_ttl: 3600
+
+frame:
+  extraction_quality: 95
+  matching_threshold: 0.80
+  transition_frames: 3
+  blend_algorithm: "linear"
+
+scene:
+  auto_prompt_injection: true
+  preserve_lighting: true
+  preserve_composition: true
+
+storage:
+  type: local
+  bucket: ${GOOGLE_CLOUD_BUCKET}
+  cache_dir: ${CACHE_DIR}
+  max_cache_size: 10gb
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: false
+  workers: 4
+  log_level: INFO
+  timeout: 300
+
+logging:
+  level: INFO
+  format: json
+  file: logs/veo3.log
+
+security:
+  secret_key: ${SECRET_KEY}
+  algorithm: HS256
+  token_expiration: 3600
